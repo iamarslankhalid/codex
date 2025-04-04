@@ -1,59 +1,44 @@
 # **Greeklish Classification Project**
 
 ## Setup Instructions
-
 ### 1. Install Dependencies
+Ensure you have Python 3.x installed, then install the required libraries:
+```bash
+pip install -r requirements.txt
+```
+Alternatively, install dependencies manually:
+```bash
+pip install pandas numpy scikit-learn nltk joblib beautifulsoup4 requests
+```
 
-- Ensure you have Python 3.x installed, then install the required libraries:
+### 2. Running the Notebook
+Run the provided Jupyter Notebook `code.ipynb` in order:
 
-- `pip install -r requirements.txt`
+1. **Data Scraping**: Automatically collects Greeklish and English text.
+2. **Preprocessing**: Cleans text and splits paragraphs into sentences.
+3. **Model Training**: Trains an SVM classifier.
+4. **Evaluation**: Computes accuracy, precision, recall, and F1-score.
 
-- Alternatively, install dependencies manually:
+#### **Running the Notebook**
+Launch Jupyter Notebook:
+```bash
+jupyter notebook greeklish_scraping.ipynb
+```
 
-- `pip install pandas numpy scikit-learn nltk joblib`
+## Testing the Classifier
+To classify a new sentence, run the **inference cell** at the end of the notebook with:
+```python
+predict_text("ti kaneis")
+```
+Expected Output:
+```
+Prediction: Greeklish
+```
 
-### 2. Running the Scripts
+## Notes
+- The model uses **TF-IDF with character n-grams**.
+- The SVM classifier is trained using an **RBF kernel**.
+- All datasets and models are stored in `/mnt/data/` for easy access.
 
-#### 2.1. Scraping Data
+For further details, refer to the **Documentation PDF**.
 
-- python greeklish_scraping.py
-
-- This script scrapes Greeklish and English sentences and saves them to final_dataset.csv.
-
-#### 2.2. Preprocessing the Data
-
-- python preprocess_data.py
-
-- Splits paragraphs into sentences and cleans text, saving results to sentences_dataset.csv.
-
-#### 2.3. Training the Model
-
-- python train_svm.py
-
-- Trains an SVM classifier and saves the model as greeklish_svm_model.pkl.
-
-#### 2.4. Evaluating the Model
-
-- python evaluate_model.py
-
-- Prints accuracy, precision, recall, and F1-score.
-
-### 3. Testing the Classifier
-
-- To classify a new sentence:
-
-- python predict.py "ti kaneis"
-
-- Output:
-
-- Prediction: Greeklish
-
-#### **Notes**
-
-- The model uses TF-IDF with character n-grams.
-
-- The SVM classifier is trained using an RBF kernel.
-
-- All datasets and models are stored in /mnt/data/ for easy access.
-
-- For further details, refer to the Documentation PDF.
